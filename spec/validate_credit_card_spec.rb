@@ -7,6 +7,14 @@ describe ValidateCreditCard do
     expect(described_class.new.validate(nil)).to eq(nil)
   end
 
+  it 'can raise Argument error when no argument passed' do
+    expect { described_class.new.validate }.to raise_error(ArgumentError)
+  end
+
+  it 'can raise Argument error when more than 16 digits passed' do
+    expect { described_class.new.validate(12_345_678_912_345_673) }.to raise_error(ArgumentError)
+  end
+
   it 'can double the digit from scanning for even numbers ' do
     expect(described_class.new.sum_doubled_digit(1714)).to eq(15)
   end

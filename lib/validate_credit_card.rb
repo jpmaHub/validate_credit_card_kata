@@ -3,8 +3,13 @@
 class ValidateCreditCard
   def validate(num)
     return nil if num.nil?
+    raise_argument_error(num)
     return true if (sum_doubled_digit(num) % 10).zero?
     false
+  end
+
+  def raise_argument_error(arg)
+    raise ArgumentError, 'Invalid Credit Card Number' if arg.digits.count > 16 
   end
 
   def sum_doubled_digit(num)
