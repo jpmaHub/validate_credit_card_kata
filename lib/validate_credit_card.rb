@@ -9,15 +9,15 @@ class ValidateCreditCard
   end
 
   def raise_argument_error(arg)
-    raise ArgumentError, 'Invalid Credit Card Number' if arg.digits.count > 16 
+    raise ArgumentError, 'Invalid Credit Card Number' if arg.digits.count > 16
   end
 
   def sum_doubled_digit(num)
-    num = num.to_s.chars.map(&:to_i)
+    num = num.to_s.chars.map(&:to_i).freeze
     doubled_num = []
     num.each_with_index do |n, i|
       if can_double_the_digit?(i, num.length)
-        double_the_digits(n, doubled_num) if can_double_the_digit?(i, num.length)
+        doubled_num.push(digit(n))
       else
         doubled_num.push(n)
       end
@@ -27,11 +27,10 @@ class ValidateCreditCard
 
   private
 
-  def double_the_digits(num, doubled)
-    double = num * 2
-    doubled_digits = doubled
-    return doubled_digits.push(num) if double > 9
-    doubled_digits.push(double)
+  def digit(num)
+    doubled_digit = num * 2
+    return num if doubled_digit > 9
+    doubled_digit
   end
 
   def can_double_the_digit?(index, num_length)
