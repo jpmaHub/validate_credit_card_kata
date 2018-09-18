@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sequel'
 # require 'pg'
 require 'connection'
@@ -5,7 +7,6 @@ require 'connection'
 database_connection = nil
 
 describe 'Connection' do
-
   it 'can create connection' do
     database_connection = Sequel.connect('postgres://workshop:secretpassword@postgres:5432/workshop_one')
 
