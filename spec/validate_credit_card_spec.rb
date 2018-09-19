@@ -48,7 +48,6 @@ describe ValidateCreditCard do
 
       if validate
         database_connection[:card].insert(number: row)
-
         rows = database_connection[:card].select(:number)
         expect(rows.all.count).to eq(4)
       end

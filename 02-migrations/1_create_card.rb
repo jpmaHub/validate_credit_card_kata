@@ -4,7 +4,7 @@ Sequel.migration do
   change do
     create_table :card do
       primary_key :id
-      String :number, null: false
+      Integer :number, null: false
     end
   end
 end

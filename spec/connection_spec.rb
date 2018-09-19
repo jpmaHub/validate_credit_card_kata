@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'sequel'
-# require 'pg'
+require 'pg'
 require 'connection'
 
 database_connection = nil

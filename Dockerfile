@@ -9,5 +9,3 @@ RUN apk --no-cache add alpine-sdk && bundle install && apk del alpine-sdk
 EXPOSE 4567
 
 ADD . /validate_credit_card
-
-CMD ["/app/bin/start.sh"]
