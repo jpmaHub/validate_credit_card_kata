@@ -6,7 +6,7 @@ build:
 build:
 	docker-compose build
 
-.PHONY: start-project
-start-project: down build
+.PHONY: start-tests
+start-tests: down build
 	docker-compose run --rm --service-ports web bundle exec rspec
 
